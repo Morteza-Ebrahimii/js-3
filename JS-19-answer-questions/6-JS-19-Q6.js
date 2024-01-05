@@ -3,23 +3,25 @@
 
 // ! answer ===========================================
 
-//! 1-
-const getEl = () => {
-  let children = document.body.children[0].children;
-  // console.log(children);
-  let childs = ([...children] = children);
-  children.forEach((element) => {
-    element.addEventListener("click", (event) => {
-      alert(event.target.innerText);
-    });
-  });
-};
-getEl();
-
-//! 2-This is the best way but it has a small bug
-// const getEle = function getEl() {
-//   addEventListener("click", (event) => {
-//     alert(event.target.innerText);
+//! 1- bad practice
+// const getEl = () => {
+//   let children = document.body.children[0].children;
+//   // console.log(children);
+//   let childs = ([...children] = children);
+//   children.forEach((element) => {
+//     element.addEventListener("click", (event) => {
+//       alert(event.target.innerText);
+//     });
 //   });
 // };
-// getEle();
+// getEl();
+
+//! 2- good practice
+const getEle = function getEl() {
+  addEventListener("click", (event) => {
+    if (event.target.localName === "button") {
+      alert(event.target.innerText);
+    }
+  });
+};
+getEle();
